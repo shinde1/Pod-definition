@@ -1,0 +1,91 @@
+1.Create a pod definition file to create a tomcat pod from tomcat8 container.
+vi pod-definition1.yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: tomcat-pod
+ labels:
+  author: smita
+  type: webserver
+spec:
+ container:
+  - name: my-tomcat
+    image: tomcat8
+    ports:
+     - containerPort: 8080
+       hostPort: 9090
+...
+kubectl create -f pod-definition1.yml
+kubectl get pods -o wide
+kubectl delete -f pod-definition1.yml
+
+
+2.Create a pod defintion file to create a niginix pod from nginix container.
+vi pod-definition2.yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginix-pod
+ labels:
+  author: xyz
+  type: webserver
+spec:
+ container:
+  - name: my-nginix
+    image: nginix
+...
+kubectl create -f pod-definition2.yml
+kubectl get pods -o wide
+kubectl delete -f pod-definition2.yml
+
+
+
+3.Create a pod definition file to create mysql pod from mysql container.
+vi pod-definition3.yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mysql-pod
+ labels:
+  author: abc
+  type: database
+spec:
+ container:
+  - name: my-sql
+    image: mysql:5
+...
+kubectl create -f pod-definition3.yml
+kubectl get pods -o wide
+kubectl delete -f pod-definition3.yml
+
+
+4.Create a pod definition file to create jenkins pod and also perform port mapping.
+vi pod-definition4.yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: jenkins-pod
+ labels:
+  author: xyz
+  type: ci-cd
+spec:
+ container:
+  - name: jenkins-server
+    image: jenkins
+    ports:
+     - containerPort: 8080
+       hostPort: 9090
+...
+kubectl create -f pod-definition4.yml
+kubectl get pods -o wide
+kubectl delete -f definition4.yml
+
+
+
+
+
+
